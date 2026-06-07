@@ -1,0 +1,35 @@
+---
+toc: true
+number-sections: false
+---
+
+# Prefácio {.unnumbered}
+
+<!-- TODO: epígrafe(s) opcional(is). Exemplo:
+> *Citação de abertura.*
+>
+> — Autor, *Obra*
+-->
+
+## Sobre este livro
+
+<TODO: 1–3 parágrafos apresentando o livro — origem, propósito, o que o
+leitor encontrará. Substitua este texto.>
+
+## A quem este livro se destina
+
+::: {.callout-note appearance="simple"}
+## Públicos
+
+<TODO: para quem é o livro. Exemplo:>
+
+- **Estudantes de Medicina** em rotação por psiquiatria.
+- **Profissionais de saúde** que querem material clínico utilizável.
+- **Leitores interessados** no tema.
+:::
+
+## Como navegar
+
+O livro é dividido em partes (ver barra lateral). Use a busca (canto superior)
+para localizar termos, e o sumário "Nesta página" à direita para saltar entre
+seções do capítulo atual.

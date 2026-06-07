@@ -1,0 +1,127 @@
+# =========================================================================
+# Localização pt-BR — overlay sobre as strings padrão do Quarto.
+# União das chaves usadas nos projetos da casa; só estas são redefinidas,
+# o resto vem do pt-BR interno do Quarto. Mantido como padrão no template.
+# =========================================================================
+
+# --- Títulos de seção -----------------------------------------------------
+section-title-abstract: "Resumo"
+section-title-footnotes: "Notas de rodapé"
+section-title-references: "Referências"
+section-title-appendices: "Apêndices"
+section-title-reuse: "Reutilização"
+section-title-copyright: "Direitos autorais"
+section-title-citation: "Como citar"
+
+# --- Bloco de título / autoria -------------------------------------------
+title-block-author-single: "Autor"
+title-block-author-plural: "Autores"
+title-block-affiliation-single: "Afiliação"
+title-block-affiliation-plural: "Afiliações"
+title-block-published: "Publicado em"
+title-block-modified: "Modificado em"
+
+# --- Atribuição em apêndice ----------------------------------------------
+appendix-attribution-cite-as: "Para citar este conteúdo, utilize:"
+appendix-attribution-bibtex: "BibTeX"
+
+# --- Sumário / navegação --------------------------------------------------
+toc-title-document: "Sumário"
+toc-title-website: "Nesta página"
+back-to-top: "Voltar ao topo"
+related-formats-title: "Outros formatos"
+related-notebooks-title: "Cadernos relacionados"
+source-notebooks-prefix: "Cadernos-fonte"
+
+# --- Alternadores (modo escuro, sidebar, etc.) ---------------------------
+toggle-section: "Alternar seção"
+toggle-sidebar: "Alternar barra lateral"
+toggle-dark-mode: "Alternar modo escuro"
+toggle-reader-mode: "Alternar modo de leitura"
+toggle-navigation: "Alternar navegação"
+
+# --- Callouts -------------------------------------------------------------
+callout-note-title: "Nota"
+callout-tip-title: "Dica"
+callout-warning-title: "Atenção"
+callout-important-title: "Importante"
+callout-caution-title: "Cuidado"
+
+# --- Referências cruzadas (prefixos) -------------------------------------
+crossref-ch-prefix: "Capítulo"
+crossref-apx-prefix: "Apêndice"
+crossref-sec-prefix: "Seção"
+crossref-eq-prefix: "Equação"
+crossref-cnj-prefix: "Conjectura"
+crossref-cor-prefix: "Corolário"
+crossref-def-prefix: "Definição"
+crossref-exm-prefix: "Exemplo"
+crossref-exr-prefix: "Exercício"
+crossref-lem-prefix: "Lema"
+crossref-prp-prefix: "Proposição"
+crossref-thm-prefix: "Teorema"
+
+# --- Referências cruzadas (títulos) --------------------------------------
+crossref-fig-title: "Figura"
+crossref-tbl-title: "Tabela"
+crossref-lst-title: "Listagem"
+crossref-thm-title: "Teorema"
+crossref-lem-title: "Lema"
+crossref-cor-title: "Corolário"
+crossref-prp-title: "Proposição"
+crossref-cnj-title: "Conjectura"
+crossref-def-title: "Definição"
+crossref-exm-title: "Exemplo"
+crossref-exr-title: "Exercício"
+
+# --- Código ---------------------------------------------------------------
+code-summary: "Código"
+code-tools-menu-caption: "Código"
+code-tools-show-all-code: "Mostrar todo o código"
+code-tools-hide-all-code: "Ocultar todo o código"
+code-tools-view-source: "Ver código-fonte"
+code-tools-source-code: "Código-fonte"
+code-line: "Linha"
+code-lines: "Linhas"
+copy-button-tooltip: "Copiar para a área de transferência"
+copy-button-tooltip-success: "Copiado!"
+
+# --- Busca ----------------------------------------------------------------
+search-label: "Buscar"
+search-no-results-text: "Nenhum resultado"
+search-matching-documents-text: "documentos encontrados"
+search-copy-link-title: "Copiar link para a busca"
+search-hide-matches-text: "Ocultar correspondências adicionais"
+search-more-match-text: "mais correspondência neste documento"
+search-more-matches-text: "mais correspondências neste documento"
+search-clear-button-title: "Limpar"
+search-text-placeholder: "Buscar"
+search-detached-cancel-button-title: "Cancelar"
+search-submit-button-title: "Buscar"
+
+# --- Listagens ------------------------------------------------------------
+listing-page-order-by: "Ordenar por"
+listing-page-order-by-default: "Padrão"
+listing-page-order-by-date-asc: "Mais antigos"
+listing-page-order-by-date-desc: "Mais recentes"
+listing-page-order-by-number-desc: "Maior número"
+listing-page-order-by-number-asc: "Menor número"
+listing-page-field-date: "Data"
+listing-page-field-title: "Título"
+listing-page-field-description: "Descrição"
+listing-page-field-author: "Autor"
+listing-page-field-filename: "Arquivo"
+listing-page-field-filemodified: "Modificado em"
+listing-page-field-subtitle: "Subtítulo"
+listing-page-field-readingtime: "Tempo de leitura"
+listing-page-field-categories: "Categorias"
+listing-page-minutes-compact: "{0} min"
+listing-page-category-all: "Todas"
+listing-page-no-matches: "Nenhum item encontrado"
+listing-page-words: "{0} palavras"
+listing-page-filter: "Filtrar"
+
+# --- Ações do repositório -------------------------------------------------
+repo-action-links-edit: "Editar esta página"
+repo-action-links-source: "Ver fonte"
+repo-action-links-issue: "Reportar problema"

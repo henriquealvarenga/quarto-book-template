@@ -1,0 +1,27 @@
+---
+title: "Roteiro de Entrevista Simulada — Caso de exemplo"
+subtitle: "Roteiro original para fins didáticos"
+author: "Material didático para estudantes de medicina"
+bibliography: ../references/references.bib
+format:
+  html:
+    toc: true
+    toc-depth: 3
+---
+
+::: callout-important
+## Aviso ao docente
+Material **original** para fins didáticos. <TODO: ajustar a nota conforme o caso.
+Não revelar o diagnóstico-alvo aos alunos antes do exercício de inferência.>
+:::
+
+# Roteiro de Entrevista Simulada — Caso de exemplo
+
+## 1. Ficha técnica do caso
+
+<TODO: dados do caso (idade, contexto, queixa) construídos a partir da categoria
+diagnóstica, sem reproduzir um caso real.>
+
+## 2. Roteiro
+
+<TODO: perguntas e respostas simuladas.>

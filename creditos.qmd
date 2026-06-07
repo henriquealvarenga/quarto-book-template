@@ -1,0 +1,198 @@
+---
+subtitle: "Autor, metodologia, licença e como citar"
+toc: true
+number-sections: false
+---
+
+# Créditos {.unnumbered}
+
+## Autor
+
+**Henrique Alvarenga da Silva**
+
+Médico psiquiatra. Professor de Psiquiatria do Curso de Medicina da Universidade Federal de São João del-Rei (UFSJ) e professor na AFYA Educacional. Especialista em Psiquiatria e Psicopatologia, com foco em metodologia de pesquisa e educação médica baseada em evidências. Mestre em Educação Médica.
+
+::: {.contact-links}
+[🌐 Site pessoal](https://www.henriquealvarenga.com){.contact-link}
+[📧 E-mail](mailto:henrique@ufsj.edu.br){.contact-link}
+[🆔 ORCID](https://orcid.org/0000-0001-9799-5240){.contact-link}
+[📚 GitHub](https://github.com/henriquealvarenga){.contact-link}
+:::
+
+::: {.about-section}
+## Metodologia e tecnologias
+
+Este recurso foi construído usando ferramentas de código aberto e ciência aberta:
+
+::: {.tech-stack}
+::: {.tech-item}
+#### Escrita & Estrutura
+**Quarto** — Sistema de publicação científica
+**Markdown** — Linguagem de marcação
+**BibTeX** — Gerenciamento bibliográfico
+:::
+
+::: {.tech-item}
+#### Desenvolvimento
+**Positron IDE** — Ambiente integrado
+**Git/GitHub** — Controle de versão
+**GitHub Actions** — Publicação automática
+:::
+
+::: {.tech-item}
+#### Pesquisa
+**PubMed** — Base bibliográfica
+**Zotero** — Gerenciamento de referências
+**DOI verification** — Validação de citações
+:::
+
+::: {.tech-item}
+#### Design
+**CSS moderno** — Interface responsiva
+**Tema editorial** — Tipografia serif/sans
+**Self-hosted fonts** — Playfair, Inter, JetBrains Mono
+:::
+:::
+
+### Inteligência artificial
+
+O desenvolvimento contou com auxílio de IA generativa:
+
+- **Claude** (Anthropic) — assistência na estruturação, código CSS, organização bibliográfica
+- **PubMed search automation** — busca sistemática de literatura recente
+
+::: {.callout-note}
+## Transparência sobre uso de IA
+
+A IA foi utilizada como ferramenta de apoio, não substituto do trabalho intelectual. Toda informação foi verificada, todas as referências conferidas individualmente, todos os DOIs validados. A responsabilidade pelo conteúdo final é integralmente do autor.
+:::
+:::
+
+::: {.about-section}
+## Repositório e colaboração
+
+O código-fonte está disponível publicamente:
+
+🔗 **Repositório:** [github.com/henriquealvarenga/\<TODO-repo\>](https://github.com/henriquealvarenga/<TODO-repo>)
+
+Contribuições são bem-vindas via *issues* ou *pull requests*, especialmente:
+
+- Correções bibliográficas
+- Sugestões de novos casos clínicos
+- Melhorias na interface
+- Apontamentos conceituais e revisões
+:::
+
+::: {.about-section}
+## Crédito das imagens
+
+### Capa do livro
+
+<TODO: crédito da imagem de capa. Preencha a tabela abaixo com a fonte real
+(Unsplash/Wikimedia/etc.), autor, licença e link. Capa padrão da casa: 1600×2500 px.>
+
+::: {.content-visible when-format="html"}
+[![Capa do livro](images/capa.png){.cover-credit-thumb fig-alt="<TODO: texto alternativo descrevendo a capa>"}](#)
+:::
+
+| Campo                       | Informação |
+|-----------------------------|-----------|
+| **Autoria da imagem**       | \<TODO\> |
+| **Fonte / plataforma**      | \<TODO\> |
+| **Licença**                 | \<TODO\> |
+| **Tipografia da capa**      | Henrique Alvarenga da Silva — Playfair Display sobre a imagem |
+
+: Crédito da imagem de capa {.striped tbl-colwidths="[28,72]"}
+
+### Demais imagens
+
+Outras imagens eventualmente utilizadas neste livro provêm de fontes de uso livre (Wikimedia Commons, domínio público, licenças Creative Commons compatíveis ou Unsplash License), com crédito individual informado no próprio ponto de uso.
+:::
+
+::: {.about-section}
+## Dados de publicação
+
+| Campo            | Informação |
+|------------------|-----------|
+| **Título**        | \<TODO: Título\>: Uma Breve Introdução |
+| **Edição**        | 1ª edição |
+| **Ano**           | 2026 |
+| **Editor**        | Edição do Autor — Henrique Alvarenga da Silva |
+| **Afiliação institucional do autor** | UFSJ — Universidade Federal de São João del-Rei, Curso de Medicina |
+| **Local**         | São João del-Rei, MG, Brasil |
+| **Formato**       | E-book (HTML) |
+| **ISBN**          | em cadastramento |
+| **URL canônica**  | <https://henriquealvarenga.github.io/<TODO-repo>/> |
+
+: Ficha bibliográfica {.striped tbl-colwidths="[25,75]"}
+:::
+
+::: {.about-section}
+## Licenciamento
+
+Este trabalho está licenciado sob **Creative Commons Atribuição-NãoComercial-CompartilhaIgual 4.0 Internacional (CC BY-NC-SA 4.0)**.
+
+**Você pode:**
+
+- **Compartilhar** — copiar e redistribuir o material
+- **Adaptar** — remixar, transformar e criar a partir do material
+
+**Sob as condições:**
+
+- **Atribuição** — dar crédito apropriado
+- **NãoComercial** — não usar para fins comerciais
+- **CompartilhaIgual** — distribuir contribuições sob a mesma licença
+
+🔗 [Texto completo da licença](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt_BR)
+:::
+
+::: {.about-section}
+## Citação sugerida {#citacao-sugerida}
+
+Selecione o estilo abaixo:
+
+::: {.panel-tabset}
+
+### ABNT (NBR 6023)
+
+SILVA, Henrique Alvarenga da. **\<TODO: Título\>**: uma breve introdução. 1. ed. São João del-Rei: Edição do Autor, 2026. E-book. Disponível em: <https://henriquealvarenga.github.io/<TODO-repo>/>. Acesso em: [inserir data de acesso].
+
+### Vancouver
+
+Silva HA. \<TODO: Título\>: uma breve introdução. 1ª ed. [Internet]. São João del-Rei (MG): Edição do Autor; 2026 [citado em ano mês dia]. Disponível em: https://henriquealvarenga.github.io/<TODO-repo>/
+
+### APA (7ª ed.)
+
+Silva, H. A. da. (2026). *\<TODO: Título\>: Uma breve introdução* (1ª ed.). Edição do Autor. https://henriquealvarenga.github.io/<TODO-repo>/
+
+### BibTeX
+
+```bibtex
+@book{silva_<TODO-chave>_2026,
+  author    = {Silva, Henrique Alvarenga da},
+  title     = {<TODO: Título>: uma breve introdução},
+  edition   = {1},
+  publisher = {Edição do Autor},
+  address   = {São João del-Rei, MG, Brasil},
+  year      = {2026},
+  url       = {https://henriquealvarenga.github.io/<TODO-repo>/},
+  note      = {E-book; primeira edição}
+}
+```
+
+:::
+:::
+
+::: {.about-section}
+## Contato
+
+Dúvidas, sugestões ou correções:
+
+📧 [henriquealvarenga@ufsj.edu.br](mailto:henriquealvarenga@ufsj.edu.br)
+
+Ou via *issues* no [repositório GitHub](https://github.com/henriquealvarenga/<TODO-repo>).
+
+---
+
+*Última atualização: 2026*
+:::

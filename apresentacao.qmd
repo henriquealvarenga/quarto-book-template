@@ -1,0 +1,11 @@
+---
+title: "Apresentação"
+toc: true
+number-sections: false
+---
+
+# Apresentação {.unnumbered}
+
+<TODO: folha de rosto / apresentação do livro. Use esta página para contexto
+institucional, agradecimentos, nota da edição, ou como introdução geral antes
+da Parte I. Se não precisar, remova `apresentacao.qmd` do sumário em `_quarto.yml`.>

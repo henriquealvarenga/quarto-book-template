@@ -1,0 +1,24 @@
+---
+title: "Introdução"
+---
+
+<TODO: este é um capítulo de exemplo. Substitua o conteúdo. Demonstra o uso
+de elementos comuns do tema.>
+
+## Uma seção
+
+Texto corrido de exemplo. As citações usam a sintaxe Pandoc e devem existir em
+`references/references.bib` — caso contrário, o validador (`code/validate_bib.py`)
+acusa erro no CI. Exemplo de citação: [@exemplo_modelo_2026].
+
+## Recursos do tema
+
+::: {.callout-note}
+## Callout de nota
+Os callouts (`note`, `tip`, `warning`, `important`, `caution`) já vêm com
+títulos em português via `_language-pt.yml`.
+:::
+
+> Citação em bloco (blockquote) para destaques e epígrafes.
+
+Uma referência cruzada a uma figura ou tabela usa `@fig-rotulo` / `@tbl-rotulo`.

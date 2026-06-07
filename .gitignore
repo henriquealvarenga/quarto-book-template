@@ -1,0 +1,62 @@
+# Quarto
+_book/
+_site/
+.quarto/
+*_files/
+*_cache/
+
+# Frozen (cache de execução do Quarto)
+# Mantemos o _freeze versionado é OPCIONAL — comente a linha abaixo se quiser
+# que o CI sempre recompile. Padrão: ignorar para reduzir noise.
+_freeze/
+
+# OS / editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python (do validador)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# LaTeX intermediários (caso PDF seja gerado localmente)
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.run.xml
+*.bcf
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Artefatos de validação (gerados pelo CI a cada build)
+validation-report.json
+validation-basic.json
+validation-deep.json
+validation-deep.html
+
+# Backups defensivos do .bib (criados manualmente antes de edições arriscadas)
+references/*.bib.bak-*
+
+# PDFs de referências (mantidos localmente para consulta; não versionar)
+references/PDFs/
+references/pdfs/
+
+# Pixelmator project file (5.9 MB) — descomente se preferir versionar a fonte editável
+images/capa.pxd
+
+# HTML gerado de capítulos individuais (creditos.html já existe — manter)
+# capitulos/*.html
+# coda/*.html
+# apendices/*.html
+
+/.quarto/
+**/*.quarto_ipynb

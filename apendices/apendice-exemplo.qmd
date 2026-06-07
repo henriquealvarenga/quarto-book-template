@@ -1,0 +1,10 @@
+---
+title: "Apêndice de exemplo"
+number-sections: false
+---
+
+# Apêndice de exemplo {.unnumbered}
+
+<TODO: conteúdo complementar (leituras, glossário, ensaio opcional, material de
+apoio). Os apêndices ficam na pasta `apendices/` e são listados na seção
+`appendices:` do `_quarto.yml`.>

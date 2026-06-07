@@ -1,0 +1,10 @@
+---
+title: "Casos clínicos — apresentação"
+number-sections: false
+---
+
+# Casos clínicos {.unnumbered}
+
+<TODO: introdução à seção de casos clínicos / atividades práticas. Explique a
+proposta didática (ex.: roteiros de entrevista simulada para inferência
+diagnóstica pelo aluno). Os casos individuais ficam nesta pasta `casos/`.>

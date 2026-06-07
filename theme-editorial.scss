@@ -1,0 +1,940 @@
+/*-- scss:defaults --*/
+
+// =========================================================================
+// INTENCIONALIDADE — Tema editorial (paper)
+// Paper off-white, accent burnt orange, títulos serif Playfair Display.
+// Adaptado do tema editorial do projeto "Viés e Erro".
+// =========================================================================
+
+// Fontes
+$font-family-sans-serif: "Inter", ui-sans-serif, system-ui, sans-serif !default;
+$font-family-serif: "Playfair Display", Georgia, "Times New Roman", serif !default;
+$font-family-monospace: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace !default;
+$font-size-base: 1rem !default;
+$line-height-base: 1.65 !default;
+
+// Paleta
+$paper:         #F9F9F7;
+$paper-content: #ffffff;
+$sidebar-bg:    #f2f2ee;
+$border-color:  #e5e5e0;
+$border-soft:   #dcdcd8;
+
+$text-primary:   #1a1a1a;
+$text-body:      #333333;
+$text-secondary: #444444;
+$text-muted:     #888888;
+$text-faint:     #999999;
+
+$brand:        #b45309;
+$brand-dark:   #92400e;
+$brand-soft:   rgba(180, 83, 9, 0.08);
+$brand-line:   rgba(180, 83, 9, 0.20);
+
+$footer-bar:   #1a1a1a;
+
+// Bootstrap overrides
+$body-bg:    $paper;
+$body-color: $text-primary;
+$primary:    $brand;
+$link-color: $brand;
+$link-decoration: none;
+$link-hover-color: $brand-dark;
+
+$border-radius:     2px;
+$border-radius-sm:  2px;
+$border-radius-lg:  4px;
+
+$headings-font-family: $font-family-serif;
+$headings-font-weight: 300;
+$headings-line-height: 1.05;
+$headings-color: $text-primary;
+
+$code-color: $brand;
+$code-bg: rgba(180, 83, 9, 0.04);
+
+$table-color: $text-body;
+$table-border-color: $border-color;
+
+// Quarto navbar / sidebar / TOC
+$navbar-bg: $paper;
+$navbar-fg: $text-primary;
+$navbar-hl: $brand;
+
+$sidebar-bg: $sidebar-bg;
+$sidebar-fg: $text-secondary;
+$sidebar-hl: $brand;
+
+$toc-color: $text-muted;
+$toc-active-border: $brand;
+$toc-inactive-border: $border-color;
+
+$code-block-bg: $paper;
+$code-block-border-left: $brand;
+
+$callout-color-note: $brand;
+$callout-color-tip: #166534;
+$callout-color-warning: #b45309;
+$callout-color-important: #991b1b;
+
+
+/*-- scss:rules --*/
+
+// =========================================================================
+// Tipografia
+// =========================================================================
+body {
+  background: $paper;
+  // Cor base do corpo do texto. Definida aqui (não em p {}) pra que
+  // containers que mudam a cor (footer, callouts) cascateiem naturalmente
+  // para seus filhos sem precisar de !important.
+  color: $text-body;
+  font-family: $font-family-sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "kern", "liga", "calt", "ss01";
+}
+
+// H1 — título da página (vindo do bloco title:)
+.quarto-title h1.title,
+h1.title {
+  font-family: $font-family-serif;
+  font-weight: 300;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  color: $text-primary;
+  margin-bottom: 0.5rem;
+}
+
+.quarto-title .subtitle,
+h1.title + .subtitle {
+  font-family: $font-family-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: $text-secondary;
+  line-height: 1.4;
+  margin-top: 0.5rem;
+}
+
+// H2 — section labels (small caps brand)
+.content h2,
+main h2,
+article h2 {
+  font-family: $font-family-sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: $brand;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+// H3 — sub-examples
+.content h3,
+main h3,
+article h3 {
+  font-family: $font-family-sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: $text-primary;
+  margin-top: 2rem;
+  margin-bottom: 0.6rem;
+}
+
+.content h4 {
+  font-family: $font-family-sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: $text-muted;
+  margin-top: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+  // Cor vem do body via inheritance — não setar aqui (vide body {}).
+}
+
+p strong, li strong { color: $text-primary; font-weight: 600; }
+em { font-style: italic; color: $text-primary; }
+
+ul, ol {
+  margin-bottom: 1.2rem;
+  padding-left: 1.5rem;
+}
+
+ul li, ol li {
+  margin: 0.45rem 0;
+  line-height: 1.55;
+}
+
+ul li::marker { color: $brand; }
+ol li::marker { color: $brand; font-family: $font-family-monospace; font-weight: 500; }
+
+a {
+  color: $brand;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.12s ease;
+}
+
+a:hover {
+  color: $brand-dark;
+  border-bottom-color: $brand;
+}
+
+// Code
+code:not(pre code) {
+  font-family: $font-family-monospace;
+  font-size: 0.88em;
+  color: $brand;
+  background: $brand-soft;
+  padding: 0.05em 0.4em;
+  border-radius: 2px;
+  border: none;
+}
+
+pre, pre code {
+  background: $paper !important;
+  color: $text-body;
+  border: 1px solid $border-color;
+  border-left: 3px solid $brand;
+  border-radius: 0;
+  font-size: 0.85em;
+  font-family: $font-family-monospace;
+  padding: 1rem 1.2rem;
+}
+
+div.sourceCode {
+  background: $paper !important;
+  border: 1px solid $border-color;
+  border-left: 3px solid $brand;
+  border-radius: 0;
+}
+
+// Blockquote
+blockquote, .blockquote {
+  background: rgba(0, 0, 0, 0.025);
+  border-left: 2px solid $brand;
+  font-family: $font-family-sans-serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: $text-body;
+  padding: 1rem 1.4rem;
+  margin: 1.4rem 0;
+  border-radius: 0;
+}
+
+// Tabelas
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: none;
+  border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+  width: 100%;
+  margin: 1.4rem 0;
+  font-size: 0.92rem;
+}
+
+th {
+  background: transparent;
+  color: $text-muted;
+  font-family: $font-family-sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-align: left;
+  border-bottom: 1px solid $border-color;
+  padding: 0.6rem 0.9rem;
+}
+
+td {
+  color: $text-body;
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid rgba(229, 229, 224, 0.6);
+  vertical-align: top;
+}
+
+tbody tr:last-child td { border-bottom: none; }
+
+hr {
+  border: none;
+  border-top: 1px solid $border-color;
+  margin: 2.5rem 0;
+}
+
+::selection {
+  background: $brand-soft;
+  color: $text-primary;
+}
+
+// =========================================================================
+// Navbar
+// =========================================================================
+.navbar {
+  background: $paper !important;
+  border-bottom: 1px solid $border-color;
+  padding: 1.2rem 1.5rem;
+  font-family: $font-family-sans-serif;
+  box-shadow: none;
+}
+
+// Título do site no navbar — masthead em Playfair italic
+.navbar-brand,
+.navbar .navbar-brand,
+.navbar-title,
+.navbar .navbar-title,
+.navbar-brand-container .navbar-title {
+  font-family: $font-family-serif !important;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  color: $text-primary !important;
+  text-transform: none !important;
+}
+
+.navbar-brand:hover,
+.navbar .navbar-brand:hover,
+.navbar-title:hover {
+  color: $brand !important;
+  border-bottom: none;
+}
+
+.navbar .nav-link {
+  color: $text-secondary !important;
+  font-family: $font-family-sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: color 0.12s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: $brand !important;
+}
+
+// =========================================================================
+// Sidebar
+// =========================================================================
+.sidebar-navigation,
+nav.sidebar {
+  background: $sidebar-bg !important;
+  border-right: 1px solid $border-color;
+  padding: 1.4rem 0.8rem;
+  font-family: $font-family-sans-serif;
+}
+
+.sidebar-title,
+.sidebar h2 {
+  font-family: $font-family-sans-serif !important;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  color: $text-secondary;
+  margin: 0 0 1rem 0.4rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid $border-soft;
+  border-radius: 0;
+}
+
+.sidebar-item-text {
+  color: $text-body;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  font-family: $font-family-sans-serif;
+}
+
+.sidebar-item .sidebar-item-text:hover { color: $brand; }
+
+.sidebar-item .sidebar-item-text.active,
+.sidebar-link.active {
+  color: $brand !important;
+  font-weight: 700;
+}
+
+.sidebar-section .sidebar-item-section {
+  color: $text-muted;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.68rem;
+  font-weight: 700;
+  margin-top: 0.8rem;
+}
+
+// =========================================================================
+// TOC à direita
+// =========================================================================
+#TOC, .toc-active {
+  color: $text-muted;
+  font-family: $font-family-sans-serif;
+}
+
+#toc-title, .sidebar nav[role=doc-toc] > h2 {
+  color: $text-muted;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.66rem;
+  font-weight: 700;
+  font-family: $font-family-sans-serif !important;
+  border-bottom: 1px solid $border-soft;
+  padding-bottom: 0.6rem;
+  margin-bottom: 0.7rem;
+}
+
+.sidebar nav[role=doc-toc] ul > li > a {
+  color: $text-secondary;
+  font-size: 0.82rem;
+  border-left: 1px solid $border-color;
+  padding: 0.2rem 0 0.2rem 0.6rem;
+  font-family: $font-family-sans-serif;
+}
+
+.sidebar nav[role=doc-toc] ul > li > a:hover {
+  color: $brand;
+  border-left-color: $brand;
+}
+
+.sidebar nav[role=doc-toc] ul > li > a.active {
+  color: $brand;
+  border-left-color: $brand;
+  font-weight: 600;
+}
+
+// =========================================================================
+// Footer — barra preta
+// =========================================================================
+.nav-footer,
+.page-footer,
+footer.nav-footer {
+  background: $footer-bar !important;
+  color: #ffffff !important;
+  border-top: none;
+  padding: 0.7rem 1.5rem;
+  font-family: $font-family-sans-serif;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+  min-height: 2.5rem;
+  display: flex;
+  align-items: center;
+}
+
+// Links do footer: especificidade (0,1,1) supera a regra global a {} (0,0,1)
+// e a regra .navbar .nav-link (que tem mesma especificidade mas vive em outro
+// container). Sem !important.
+.nav-footer a {
+  color: rgba(255, 255, 255, 0.85);
+  border-bottom: none;
+}
+
+.nav-footer a:hover {
+  color: $brand;
+}
+
+// Parágrafos no footer só precisam zerar o margin-bottom global do p {}.
+// A cor herda naturalmente do .nav-footer (que herda do .footer/body com
+// override de color: #ffffff no container).
+.nav-footer p {
+  margin: 0;
+}
+
+// =========================================================================
+// Search
+// =========================================================================
+.aa-DetachedSearchButton {
+  background: transparent;
+  border: 1px solid $border-color;
+  border-radius: 2px;
+  color: $text-muted;
+  font-size: 0.78rem;
+}
+
+.aa-DetachedSearchButton:hover {
+  border-color: $brand;
+  color: $brand;
+}
+
+// =========================================================================
+// Title block
+// =========================================================================
+.quarto-title-block {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid $border-color;
+}
+
+.quarto-title-meta {
+  color: $text-muted;
+  font-size: 0.78rem;
+  font-family: $font-family-sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.8rem;
+}
+
+// =========================================================================
+// Componentes em uso
+// =========================================================================
+
+// Topic badge
+.topic-badge {
+  display: inline-block;
+  background: $brand;
+  color: #ffffff;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-family: $font-family-sans-serif;
+  margin-bottom: 1.5rem;
+  border-radius: 2px;
+  border-bottom: none;
+}
+.topic-badge:hover {
+  color: #ffffff;
+  border-bottom: none;
+}
+
+// Eyebrow — usado no index
+.eyebrow {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: $text-muted;
+  margin-bottom: 0.8rem;
+  font-family: $font-family-sans-serif;
+}
+
+// Lede — primeiro parágrafo destacado
+.lede {
+  font-family: $font-family-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: $text-secondary;
+  margin: 1.5rem 0 2.5rem 0;
+}
+
+// Sumário — lista numerada com tabular nums (caso usemos no futuro)
+.sumario {
+  list-style: none;
+  padding-left: 0;
+  margin: 2rem 0;
+}
+
+.sumario li {
+  display: flex;
+  align-items: baseline;
+  font-size: 0.95rem;
+  margin: 0.6rem 0;
+  padding: 0;
+  line-height: 1.35;
+}
+
+.sumario li::marker { content: ""; }
+
+.sumario li .num {
+  font-family: $font-family-monospace;
+  font-size: 0.78rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: $text-muted;
+  width: 2.4rem;
+  flex-shrink: 0;
+  text-align: right;
+  padding-right: 0.8rem;
+  opacity: 0.5;
+}
+
+.sumario li a {
+  color: $text-body;
+  border-bottom: none;
+  flex-grow: 1;
+}
+
+.sumario li a:hover {
+  color: $brand;
+  border-bottom: none;
+}
+
+.sumario .grupo {
+  font-family: $font-family-sans-serif;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  color: $text-muted;
+  margin: 1.8rem 0 0.6rem 0;
+  display: block;
+  padding-left: 2.4rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid $border-soft;
+}
+
+// Citation blocks — créditos
+.citation-block {
+  background: rgba(0, 0, 0, 0.025);
+  border-left: 2px solid $brand;
+  padding: 0.9rem 1.2rem;
+  margin: 0.8rem 0;
+  font-size: 0.95rem;
+  color: $text-body;
+  border-radius: 0;
+}
+
+// Author card — créditos
+.author-card {
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid $border-color;
+  border-radius: 2px;
+  padding: 1.4rem 1.6rem;
+  margin: 1.5rem 0;
+}
+
+.author-name {
+  font-family: $font-family-serif;
+  font-weight: 400;
+  margin-bottom: 0.2rem;
+}
+
+.author-role {
+  color: $brand;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+// Utilitários
+.muted  { color: $text-muted; font-size: 0.9em; }
+.accent { color: $brand; }
+
+// =========================================================================
+// Hero da landing page (index.qmd)
+// =========================================================================
+.hero {
+  padding: 1rem 0 3rem 0;
+  border-bottom: 1px solid $border-color;
+  margin-bottom: 3rem;
+}
+
+.hero .eyebrow {
+  margin-bottom: 1.2rem;
+}
+
+.hero h1, .hero .hero-title {
+  font-family: $font-family-serif;
+  font-weight: 300;
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  color: $text-primary;
+  margin: 0 0 0.6rem 0;
+}
+
+.hero .hero-subtitle {
+  font-family: $font-family-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+  color: $text-secondary;
+  line-height: 1.4;
+  margin: 0 0 2rem 0;
+}
+
+.hero .lede {
+  margin: 0;
+  max-width: 720px;
+}
+
+// CTA inferior da landing — botão "Começar a leitura"
+.cta-block {
+  margin: 3.5rem 0 1rem 0;
+  padding-top: 2rem;
+  border-top: 1px solid $border-color;
+  text-align: center;
+}
+
+.cta-block .btn-read {
+  display: inline-block;
+  background: $brand;
+  color: #ffffff !important;
+  font-family: $font-family-sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0.85rem 2rem;
+  border: 1px solid $brand;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+
+.cta-block .btn-read:hover {
+  background: $brand-dark;
+  border-color: $brand-dark;
+  color: #ffffff !important;
+  border-bottom: 1px solid $brand-dark;
+}
+
+// =========================================================================
+// About page — contact-links, about-section, tech-stack, tech-item
+// =========================================================================
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1rem 0 2rem 0;
+}
+
+.contact-link {
+  display: inline-block;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.82rem;
+  font-family: $font-family-sans-serif;
+  color: $text-secondary;
+  background: transparent;
+  border: 1px solid $border-color;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: border-color 0.12s ease, color 0.12s ease;
+}
+
+.contact-link:hover {
+  color: $brand;
+  border-color: $brand;
+  border-bottom: 1px solid $brand;
+}
+
+.about-section {
+  margin: 2.5rem 0;
+  padding-top: 0.5rem;
+}
+
+.about-section + .about-section {
+  border-top: 1px solid $border-color;
+  padding-top: 2.5rem;
+}
+
+.tech-stack {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin: 1.5rem 0;
+}
+
+.tech-item {
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid $border-color;
+  border-radius: 2px;
+  padding: 1.2rem 1.3rem;
+}
+
+.tech-item h4 {
+  font-family: $font-family-sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: $brand;
+  margin: 0 0 0.7rem 0;
+}
+
+.tech-item p, .tech-item br + * {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: $text-body;
+  margin: 0;
+}
+
+.tech-item strong {
+  color: $text-primary;
+  font-weight: 600;
+}
+
+// =========================================================================
+// Callouts
+// =========================================================================
+.callout {
+  background: $sidebar-bg;
+  border: none;
+  border-left: 2px solid $brand;
+  border-radius: 0;
+  padding: 1rem 1.3rem;
+  margin: 1.4rem 0;
+  font-size: 0.95rem;
+  color: $text-body;
+}
+
+.callout-header,
+.callout .callout-title {
+  color: $brand;
+  font-weight: 700;
+  font-family: $font-family-sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.4rem;
+}
+
+.callout-note      { border-left-color: $brand; }
+.callout-tip       { border-left-color: #166534; }
+.callout-tip .callout-title { color: #166534; }
+.callout-warning   { border-left-color: #b45309; }
+.callout-important { border-left-color: #991b1b; }
+.callout-important .callout-title { color: #991b1b; }
+
+// =========================================================================
+// Bibliografia
+// =========================================================================
+.references,
+.csl-bib-body,
+div#refs {
+  padding-top: 1.5rem;
+  margin-top: 2rem;
+  border-top: 1px solid $border-color;
+  font-size: 0.78rem;
+  color: $text-muted;
+  font-family: $font-family-serif;
+  font-style: italic;
+}
+
+.csl-entry {
+  margin-bottom: 0.6rem;
+  line-height: 1.5;
+}
+
+.csl-entry a { color: $brand; font-style: normal; }
+
+.citation a, a.citation {
+  color: $brand;
+  text-decoration: none;
+  border-bottom: 1px dotted $brand-line;
+}
+.citation a:hover { border-bottom-style: solid; }
+
+// =========================================================================
+// Imagens e figuras
+// =========================================================================
+.content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 2px;
+  border: 1px solid $border-color;
+}
+
+figcaption, .figure-caption {
+  font-family: $font-family-serif;
+  font-style: italic;
+  font-size: 0.82rem;
+  color: $text-muted;
+  text-align: center;
+  margin-top: 0.6rem;
+}
+
+// =========================================================================
+// Buttons
+// =========================================================================
+.btn {
+  border-radius: 2px;
+  font-family: $font-family-sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.6rem 1.4rem;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+
+.btn-primary {
+  background: $brand;
+  color: #ffffff;
+  border: 1px solid $brand;
+}
+.btn-primary:hover {
+  background: $brand-dark;
+  border-color: $brand-dark;
+  color: #ffffff;
+}
+
+.btn-outline-primary {
+  background: transparent;
+  color: $text-primary;
+  border: 1px solid $border-color;
+}
+.btn-outline-primary:hover {
+  border-color: $brand;
+  background: transparent;
+  color: $brand;
+}
+
+// =========================================================================
+// Tabs (panel-tabset usado em about.qmd para citações)
+// =========================================================================
+.panel-tabset {
+  margin: 1.5rem 0;
+}
+
+.panel-tabset > .nav-tabs {
+  border-bottom: 1px solid $border-color;
+  margin-bottom: 1rem;
+}
+
+.panel-tabset > .nav-tabs .nav-link {
+  font-family: $font-family-sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: $text-muted;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  padding: 0.5rem 1rem;
+}
+
+.panel-tabset > .nav-tabs .nav-link.active {
+  color: $brand;
+  border-bottom-color: $brand;
+  background: transparent;
+}
+
+.panel-tabset > .nav-tabs .nav-link:hover {
+  color: $brand;
+  border-bottom-color: $brand-line;
+}
+
+// Responsividade
+@media (max-width: 768px) {
+  .quarto-title h1.title,
+  h1.title { font-size: 2rem; }
+  .hero h1 { font-size: 2.2rem; }
+  body { font-size: 0.95rem; }
+}

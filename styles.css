@@ -1,0 +1,227 @@
+/* =========================================================================
+   INTENCIONALIDADE — overrides finos sobre o tema editorial
+   Tema principal vive em theme-editorial.scss.
+   Aqui ficam:
+     1. @font-face para fontes self-hosted em fonts/
+     2. Variáveis CSS expostas para HTML inline
+     3. Ajustes que precisam sobrescrever o Quarto após processamento
+     4. Animação fade-in
+   ========================================================================= */
+
+/* -------------------------------------------------------------------------
+   1. Fontes self-hosted (fonts/)
+   ------------------------------------------------------------------------- */
+
+/* Playfair Display — títulos e elementos italic do tema editorial
+   Nota: Google Fonts não distribui o peso 300 (Light) desta família;
+   declarações font-weight: 300 no SCSS fazem fallback automático para 400. */
+@font-face {
+  font-family: "Playfair Display";
+  src: url("fonts/PlayfairDisplay-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("fonts/PlayfairDisplay-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("fonts/PlayfairDisplay-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Inter — corpo, navbar, sidebar, h4 etc. */
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/Inter-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/Inter-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/Inter-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/Inter-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* JetBrains Mono — código e números do sumário */
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("fonts/JetBrainsMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("fonts/JetBrainsMono-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* -------------------------------------------------------------------------
+   2. Variáveis CSS expostas (para HTML inline e cálculos custom)
+   ------------------------------------------------------------------------- */
+:root {
+  --paper:         #F9F9F7;
+  --paper-content: #ffffff;
+  --sidebar-bg:    #f2f2ee;
+  --border-color:  #e5e5e0;
+  --border-soft:   #dcdcd8;
+
+  --text-primary:   #1a1a1a;
+  --text-body:      #333333;
+  --text-secondary: #444444;
+  --text-muted:     #888888;
+  --text-faint:     #999999;
+
+  --brand:        #b45309;
+  --brand-dark:   #92400e;
+  --brand-soft:   rgba(180, 83, 9, 0.08);
+  --brand-line:   rgba(180, 83, 9, 0.20);
+
+  --footer-bar:   #1a1a1a;
+
+  --font-sans:  "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-mono:  "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* -------------------------------------------------------------------------
+   3. Largura editorial e ajustes pós-Quarto
+   ------------------------------------------------------------------------- */
+main.content,
+.content {
+  max-width: none;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 1200px) {
+  main.content > .quarto-title-block,
+  main.content > section,
+  main.content > p,
+  main.content > h2,
+  main.content > h3,
+  main.content > ul,
+  main.content > ol,
+  main.content > table,
+  main.content > blockquote,
+  main.content > .callout,
+  main.content > .hero,
+  main.content > .cta-block,
+  main.content > .contact-links,
+  main.content > .about-section,
+  main.content > div#refs {
+    max-width: 720px;
+  }
+}
+
+/* Esconder texto auto-populado pelo Quarto no item Início da navbar
+   (quando há ícone .bi-house-fill). Mantém só o ícone visível. */
+.navbar .nav-link:has(.bi-house-fill) {
+  font-size: 0;
+}
+.navbar .nav-link:has(.bi-house-fill) i,
+.navbar .nav-link:has(.bi-house-fill) .bi {
+  font-size: 1.05rem;
+}
+
+/* -------------------------------------------------------------------------
+   4. Capa do livro (index.qmd) — só visível no HTML
+   ------------------------------------------------------------------------- */
+.book-cover {
+  display: block;
+  margin: 0.5rem auto 3rem;
+  max-width: 380px;
+  width: 60%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow:
+    0 1px  3px rgba(0,0,0,0.06),
+    0 8px 24px rgba(0,0,0,0.12),
+    0 16px 48px rgba(0,0,0,0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.book-cover:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 2px  6px rgba(0,0,0,0.08),
+    0 12px 32px rgba(0,0,0,0.16),
+    0 24px 64px rgba(0,0,0,0.10);
+}
+/* No mobile, capa um pouco menor */
+@media (max-width: 600px) {
+  .book-cover { max-width: 260px; width: 70%; }
+}
+
+/* Esconder o quarto-figure wrapper (que adiciona caption/figcaption) */
+figure:has(> .book-cover) > figcaption { display: none; }
+
+/* -------------------------------------------------------------------------
+   5a. Miniatura da capa na página de Créditos
+   ------------------------------------------------------------------------- */
+.cover-credit-thumb {
+  display: block;
+  margin: 1.5rem auto 2rem;
+  max-width: 220px;
+  width: 60%;
+  height: auto;
+  border-radius: 3px;
+  box-shadow:
+    0 1px 3px rgba(0,0,0,0.08),
+    0 6px 18px rgba(0,0,0,0.12);
+  transition: transform 0.2s ease;
+}
+.cover-credit-thumb:hover {
+  transform: scale(1.02);
+}
+figure:has(> a > .cover-credit-thumb) > figcaption,
+figure:has(> .cover-credit-thumb) > figcaption {
+  display: none;
+}
+
+/* -------------------------------------------------------------------------
+   5b. Thumbnail da capa no sidebar do livro
+   ------------------------------------------------------------------------- */
+.sidebar-title img,
+.quarto-sidebar-logo {
+  border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  max-width: 110px;
+}
+
+/* -------------------------------------------------------------------------
+   6. Fade-in suave ao navegar entre páginas
+   ------------------------------------------------------------------------- */
+main.content > * {
+  animation: fade-in 0.3s ease-out;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateX(8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}

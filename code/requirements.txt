@@ -1,0 +1,7 @@
+# =========================================================================
+# Dependências Python dos validadores bibliográficos.
+# Usado pelo workflow GitHub Actions (.github/workflows/publish.yml)
+# e instalável localmente com: pip install -r code/requirements.txt
+# =========================================================================
+bibtexparser==1.4.1
+requests==2.32.3

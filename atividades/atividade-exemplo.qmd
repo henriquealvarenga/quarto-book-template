@@ -1,0 +1,17 @@
+---
+title: "Atividade de exemplo"
+number-sections: false
+---
+
+# Atividade de exemplo {.unnumbered}
+
+<TODO: descreva uma atividade didática (exercício, debate, dinâmica). As
+atividades ficam na pasta `atividades/`.>
+
+## Objetivos
+
+<TODO>
+
+## Roteiro
+
+<TODO>

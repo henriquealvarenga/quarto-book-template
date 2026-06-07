@@ -1,0 +1,146 @@
+project:
+  type: book
+  output-dir: _book
+
+lang: pt-BR
+language: _language-pt.yml
+
+book:
+  # =========================================================================
+  # METADADOS DO PROJETO — trocar em cada livro novo (marcados com <TODO>)
+  # =========================================================================
+  title: "<TODO: Título do livro>"
+  subtitle: "Uma Breve Introdução"
+  edition: "1ª edição"                        # metadado Pandoc — vai pro EPUB/citações
+
+  # Autor padrão da casa (raramente muda)
+  author:
+    - name: "Henrique Alvarenga da Silva"
+      orcid: 0000-0001-9799-5240
+      email: henrique@ufsj.edu.br
+      affiliations:
+        - name: Universidade Federal de São João del-Rei (UFSJ)
+          department: Curso de Medicina
+  date: today
+  date-format: "MMMM [de] YYYY"
+
+  description: |
+    <TODO: 2–4 linhas descrevendo o livro. Aparece em previews sociais
+    e nos metadados do EPUB.>
+  keyword: "<TODO: palavras-chave separadas por vírgula>"
+
+  # Capa: padrão da casa = 1600×2500 px. Substituir images/capa.png.
+  cover-image: images/capa.png
+  favicon: images/favicon.png                 # 512×512; NÃO reaproveitar a capa
+  image: images/capa.png                      # thumbnail no sidebar e previews sociais
+
+  # Repositório — trocar a URL em cada projeto
+  repo-url: https://github.com/henriquealvarenga/<TODO-repo>
+  repo-branch: main
+  repo-actions: [edit, issue]
+  search: true
+  sharing: [twitter, facebook, linkedin]
+  page-navigation: true
+  back-to-top-navigation: true
+
+  sidebar:
+    style: docked
+    collapse-level: 1
+    border: true
+
+  # =========================================================================
+  # SUMÁRIO — estrutura-modelo. Renomear/expandir partes e capítulos.
+  # Pastas padrão sempre presentes: capitulos/ apendices/ atividades/ casos/
+  # =========================================================================
+  chapters:
+    - index.qmd
+    - apresentacao.qmd
+    - part: "Parte I — <TODO: nome da parte>"
+      chapters:
+        - capitulos/parte-1-exemplo/01-introducao.qmd
+    - part: "Parte II — Atividades"
+      chapters:
+        - casos/00-introducao.qmd
+        - casos/caso-exemplo.qmd
+        - atividades/atividade-exemplo.qmd
+    - creditos.qmd
+    - references.qmd
+
+  appendices:
+    - apendices/apendice-exemplo.qmd
+
+  page-footer:
+    left: "© 2026 Henrique Alvarenga — Material didático UFSJ"
+    right:
+      - icon: github
+        href: https://github.com/henriquealvarenga/<TODO-repo>
+
+# =========================================================================
+# Bibliografia — ABNT autor-data, processada pelo Citeproc do Pandoc
+# =========================================================================
+bibliography: references/references.bib
+csl: references/csl_styles/ABNT.csl
+citeproc: true
+link-citations: true
+link-bibliography: true
+reference-section-title: "Referências"
+
+# =========================================================================
+# Formatos de saída
+# =========================================================================
+format:
+  html:
+    theme:
+      - cosmo
+      - theme-editorial.scss
+    css: styles.css
+    fontsize: 1.05em
+    linestretch: 1.65
+    mainfont: "Inter"
+    monofont: "JetBrains Mono"
+    toc: true
+    toc-depth: 3
+    toc-title: "Nesta página"
+    number-sections: true
+    number-depth: 2
+    code-fold: false
+    code-tools: false
+    smooth-scroll: true
+    citations-hover: true
+    crossrefs-hover: true
+    footnotes-hover: true
+    callout-appearance: simple
+    fig-cap-location: bottom
+    tbl-cap-location: top
+    anchor-sections: true
+    highlight-style: github
+    link-external-newwindow: true
+    mermaid:
+      theme: neutral
+
+  # EPUB e PDF intencionalmente desabilitados no CI por padrão.
+  # Para gerar localmente:  quarto render --to epub  ou  quarto render --to pdf
+  # epub:
+  #   cover-image: images/capa.png
+  # pdf:
+  #   documentclass: scrbook
+  #   papersize: a5
+  #   geometry:
+  #     - inner=2.5cm
+  #     - outer=2cm
+  #     - top=2cm
+  #     - bottom=2cm
+  #   fontsize: 11pt
+  #   colorlinks: true
+  #   biblio-style: abnt
+  #   cite-method: biblatex
+  #   biblatexoptions: [style=abnt, backend=biber]
+
+# =========================================================================
+# Execução de código (placeholder para futuras análises em R/Python)
+# =========================================================================
+execute:
+  freeze: auto
+  echo: false
+  warning: false
+  message: false
