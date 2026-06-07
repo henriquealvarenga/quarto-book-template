@@ -50,8 +50,10 @@ references/*.bib.bak-*
 references/PDFs/
 references/pdfs/
 
-# Pixelmator project file (5.9 MB) — descomente se preferir versionar a fonte editável
-images/capa.pxd
+# Pixelmator: a fonte editável da capa (images/capa.pxd) É VERSIONADA neste
+# template, pois serve de modelo para gerar as capas dos projetos. Se em algum
+# projeto o .pxd ficar muito grande e você não quiser versioná-lo, descomente:
+# images/capa.pxd
 
 # HTML gerado de capítulos individuais (creditos.html já existe — manter)
 # capitulos/*.html

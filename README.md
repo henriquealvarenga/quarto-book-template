@@ -27,7 +27,7 @@ grep -rn "TODO" . --include="*.qmd" --include="*.yml"
 - [ ] `index.qmd`: prefácio (sobre o livro, públicos)
 - [ ] `apresentacao.qmd`: apresentação — ou remova do sumário se não usar
 - [ ] `creditos.qmd`: título, repo, ano, crédito da imagem de capa, BibTeX
-- [ ] `images/capa.png`: **substituir** a capa placeholder (padrão **1600×2500 px**)
+- [ ] `images/capa.pxd`: editar o modelo no **Pixelmator** (título/subtítulo/autor) e **exportar** como `images/capa.png` (padrão **1600×2500 px**), substituindo o placeholder
 - [ ] `images/favicon.png`: substituir o favicon placeholder (**512×512 px**)
 - [ ] `references/references.bib`: substituir a entrada-exemplo pela bibliografia real
 - [ ] `capitulos/`, `casos/`, `atividades/`, `apendices/`: substituir os exemplos
@@ -47,7 +47,7 @@ em geral não precisam mudar.
 | `casos/` | casos clínicos / roteiros de entrevista |
 | `references/` | `references.bib` + `csl_styles/` (ABNT, Vancouver) + `PDFs/` (gitignored) |
 | `fonts/` | fontes self-hosted (.woff2) referenciadas no `styles.css` |
-| `images/` | `capa.png` (1600×2500) + `favicon.png` (512×512) + figuras |
+| `images/` | `capa.pxd` (modelo Pixelmator editável da capa) + `capa.png` (1600×2500, exportada) + `favicon.png` (512×512) + figuras |
 | `code/` | scripts Python de validação bibliográfica (usados pelo CI) |
 
 ## Arquivos de estilo (não editar por projeto — manter sincronizados com o template)
