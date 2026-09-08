@@ -43,7 +43,7 @@ Este recurso foi construído usando ferramentas de código aberto e ciência abe
 #### Pesquisa
 **PubMed** — Base bibliográfica
 **Zotero** — Gerenciamento de referências
-**DOI verification** — Validação de citações
+**DOI verification** — Conferência de identificadores e metadados bibliográficos
 :::
 
 ::: {.tech-item}
@@ -92,7 +92,7 @@ Contribuições são bem-vindas via *issues* ou *pull requests*, especialmente:
 (Unsplash/Wikimedia/etc.), autor, licença e link. Capa padrão da casa: 1600×2500 px.>
 
 ::: {.content-visible when-format="html"}
-[![Capa do livro](images/capa.png){.cover-credit-thumb fig-alt="<TODO: texto alternativo descrevendo a capa>"}](#)
+[![Capa do livro](images/capa.jpg){.cover-credit-thumb fig-alt="<TODO: texto alternativo descrevendo a capa>"}](#)
 :::
 
 | Campo                       | Informação |
@@ -100,7 +100,7 @@ Contribuições são bem-vindas via *issues* ou *pull requests*, especialmente:
 | **Autoria da imagem**       | \<TODO\> |
 | **Fonte / plataforma**      | \<TODO\> |
 | **Licença**                 | \<TODO\> |
-| **Tipografia da capa**      | Henrique Alvarenga da Silva — Playfair Display sobre a imagem |
+| **Composição da capa**      | Henrique Alvarenga da Silva — Playfair Display e Inter sobre a imagem (`images/capa.html` → `code/make_cover.sh`) |
 
 : Crédito da imagem de capa {.striped tbl-colwidths="[28,72]"}
 
@@ -122,7 +122,7 @@ Outras imagens eventualmente utilizadas neste livro provêm de fontes de uso liv
 | **Local**         | São João del-Rei, MG, Brasil |
 | **Formato**       | E-book (HTML) |
 | **ISBN**          | em cadastramento |
-| **URL canônica**  | <https://henriquealvarenga.github.io/<TODO-repo>/> |
+| **URL canônica**  | <https://henriquealvarenga.com/<TODO-repo>/> |
 
 : Ficha bibliográfica {.striped tbl-colwidths="[25,75]"}
 :::
@@ -155,15 +155,15 @@ Selecione o estilo abaixo:
 
 ### ABNT (NBR 6023)
 
-SILVA, Henrique Alvarenga da. **\<TODO: Título\>**: uma breve introdução. 1. ed. São João del-Rei: Edição do Autor, 2026. E-book. Disponível em: <https://henriquealvarenga.github.io/<TODO-repo>/>. Acesso em: [inserir data de acesso].
+SILVA, Henrique Alvarenga da. **\<TODO: Título\>**: uma breve introdução. 1. ed. São João del-Rei: Edição do Autor, 2026. E-book. Disponível em: <https://henriquealvarenga.com/<TODO-repo>/>. Acesso em: [inserir data de acesso].
 
 ### Vancouver
 
-Silva HA. \<TODO: Título\>: uma breve introdução. 1ª ed. [Internet]. São João del-Rei (MG): Edição do Autor; 2026 [citado em ano mês dia]. Disponível em: https://henriquealvarenga.github.io/<TODO-repo>/
+Silva HA. \<TODO: Título\>: uma breve introdução. 1ª ed. [Internet]. São João del-Rei (MG): Edição do Autor; 2026 [citado em ano mês dia]. Disponível em: https://henriquealvarenga.com/<TODO-repo>/
 
 ### APA (7ª ed.)
 
-Silva, H. A. da. (2026). *\<TODO: Título\>: Uma breve introdução* (1ª ed.). Edição do Autor. https://henriquealvarenga.github.io/<TODO-repo>/
+Silva, H. A. da. (2026). *\<TODO: Título\>: Uma breve introdução* (1ª ed.). Edição do Autor. https://henriquealvarenga.com/<TODO-repo>/
 
 ### BibTeX
 
@@ -175,7 +175,7 @@ Silva, H. A. da. (2026). *\<TODO: Título\>: Uma breve introdução* (1ª ed.). 
   publisher = {Edição do Autor},
   address   = {São João del-Rei, MG, Brasil},
   year      = {2026},
-  url       = {https://henriquealvarenga.github.io/<TODO-repo>/},
+  url       = {https://henriquealvarenga.com/<TODO-repo>/},
   note      = {E-book; primeira edição}
 }
 ```

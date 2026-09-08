@@ -120,6 +120,22 @@ main.content,
   padding-bottom: 5rem;
 }
 
+/* Notas de rodapé: tipografia mais compacta que o corpo do capítulo. */
+.footnotes,
+.footnotes li,
+.footnotes p {
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.footnotes p {
+  margin-bottom: 0.4rem;
+}
+
+.footnotes li {
+  margin: 0.35rem 0;
+}
+
 @media (min-width: 1200px) {
   main.content > .quarto-title-block,
   main.content > section,
@@ -224,4 +240,46 @@ main.content > * {
 @keyframes fade-in {
   from { opacity: 0; transform: translateX(8px); }
   to   { opacity: 1; transform: translateX(0); }
+}
+
+/* -------------------------------------------------------------------------
+   Epígrafes (contracapa): três poemas centralizados, serifa itálica,
+   com espaço generoso entre eles. Quebras de verso no .qmd: barra invertida
+   no fim da linha (quebra dura do Pandoc).
+   ------------------------------------------------------------------------- */
+/* Na página da contracapa (epigrafes.qmd), o título (obrigatório para a barra lateral) é
+   ocultado: só o poema fica visível, como numa contracapa. */
+main.content:has(.epigrafes) #title-block-header,
+main.content:has(.epigrafes) h1.title {
+  display: none;
+}
+.epigrafes {
+  max-width: none;
+  margin: 22vh 0 4rem;
+  text-align: center;
+}
+.content .epigrafes blockquote,
+.epigrafes blockquote {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  border-left: none;
+  margin: 0 auto 3rem;
+  max-width: 34rem;
+  padding: 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--text-secondary, #444);
+}
+.epigrafes blockquote p {
+  margin: 0 0 0.6rem;
+}
+.epigrafes blockquote p:last-child {
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted, #888);
 }

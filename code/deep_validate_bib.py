@@ -47,6 +47,10 @@ USER_AGENT = (
     "(mailto:henriquealvarenga@ufsj.edu.br)"
 )
 CROSSREF_URL = "https://api.crossref.org/works/{doi}"
+# Nem todo DOI vive no Crossref: arXiv (10.48550), Zenodo e outros registram
+# via DataCite. Sem esta segunda consulta, um DOI perfeitamente válido é
+# reportado como FAIL "não existe".
+DATACITE_URL = "https://api.datacite.org/dois/{doi}"
 MAX_WORKERS = 3           # conservador para evitar 429
 TIMEOUT = 20
 MAX_RETRIES = 3
@@ -62,8 +66,13 @@ def normalize(s: str) -> str:
         return ""
     s = re.sub(r"\\['`^\"~=]\{?([a-zA-Z])\}?", r"\1", s)  # \'{e} -> e
     s = re.sub(r"[\{\}\\]", "", s)
+    s = re.sub(r"<[^>]+>", " ", s)          # <sup>1</sup> em títulos do Crossref
+    # O Crossref usa traços Unicode (U+2010 'Mayer‐Gross') onde o .bib usa o
+    # hífen ASCII; sem normalizar, o sobrenome "diverge" sem divergir.
+    s = re.sub(r"[\u2010-\u2015\u2212]", "-", s)
     s = unicodedata.normalize("NFKD", s)
     s = "".join(c for c in s if not unicodedata.combining(c))
+    s = re.sub(r"[^\w\s-]", " ", s)        # pontuação vira separador
     s = re.sub(r"\s+", " ", s).strip().lower()
     return s
 
@@ -72,7 +81,11 @@ def first_author_surname_bib(entry: dict) -> str:
     raw = entry.get("author") or entry.get("editor") or ""
     if not raw:
         return ""
-    first = raw.split(" and ")[0]
+    first = raw.split(" and ")[0].strip()
+    # Autor corporativo vem protegido por chaves — {American Psychiatric
+    # Association}. Pegar "a última palavra" devolveria "Association".
+    if first.startswith("{") and first.endswith("}"):
+        return normalize(first)
     if "," in first:
         sur = first.split(",")[0]
     else:
@@ -98,6 +111,20 @@ def title_similarity(a: str, b: str) -> float:
     sa, sb = set(a.split()), set(b.split())
     if not sa or not sb:
         return 0.0
+
+    # O Crossref costuma registrar só o título principal, sem o subtítulo
+    # ("Mindreading" vs "Mindreading: An Integrated Account of Pretence..."),
+    # e o Jaccard despenca embora seja a mesma obra. O caso é truncamento de
+    # subtítulo, então o teste certo é prefixo em fronteira de palavra — vale
+    # até para um título de uma palavra só, onde a contenção seria enganosa.
+    short, long_ = sorted((a, b), key=len)
+    if long_ == short or long_.startswith(short + " "):
+        return 1.0
+
+    # Deliberadamente NÃO usamos contenção (|A∩B| / |menor|) como reforço: ela
+    # dá 1.00 para obras distintas em que um título é subconjunto do outro
+    # ("Other Minds" dentro de "Perception, Reliability, and Other Minds").
+    # O prefixo acima já cobre o truncamento de subtítulo, que é o caso real.
     j = len(sa & sb) / len(sa | sb)
     if a[:40] == b[:40]:
         j = min(1.0, j + 0.1)
@@ -145,6 +172,38 @@ def fetch_crossref(doi: str) -> tuple[dict | None, str]:
             time.sleep(delay)
             delay *= 2
     return None, "HTTP 429 após retries"
+
+
+def fetch_datacite(doi: str) -> tuple[dict | None, str]:
+    """Consulta o DataCite e devolve o registro no formato do Crossref.
+
+    Usado como segunda tentativa para DOIs que não estão no Crossref
+    (arXiv, Zenodo, repositórios institucionais).
+    """
+    headers = {"User-Agent": USER_AGENT, "Accept": "application/json"}
+    try:
+        r = requests.get(DATACITE_URL.format(doi=doi),
+                         headers=headers, timeout=TIMEOUT)
+    except requests.RequestException as exc:
+        return None, f"erro de rede: {exc!s}"
+    if r.status_code != 200:
+        return None, f"HTTP {r.status_code}"
+    attrs = r.json().get("data", {}).get("attributes", {})
+    titles = attrs.get("titles") or []
+    creators = []
+    for c in attrs.get("creators", []):
+        fam = c.get("familyName") or c.get("name") or ""
+        creators.append({"family": fam})
+    publisher = attrs.get("publisher")
+    if isinstance(publisher, dict):          # esquema novo do DataCite
+        publisher = publisher.get("name", "")
+    year = attrs.get("publicationYear")
+    return {
+        "title": [titles[0].get("title", "")] if titles else [""],
+        "author": creators,
+        "issued": {"date-parts": [[year]]} if year else {},
+        "container-title": [publisher or ""],
+    }, "OK"
 
 
 # =========================================================================
@@ -202,10 +261,18 @@ def check_entry(key: str, entry: dict, cited_keys: set[str]) -> Check:
         return chk
 
     chk.doi = entry["doi"]
+    registry = "Crossref"
     item, msg = fetch_crossref(chk.doi)
+    if item is None and "404" in msg:
+        # Não está no Crossref: pode ser um DOI do DataCite (arXiv, Zenodo).
+        item, dc_msg = fetch_datacite(chk.doi)
+        if item is not None:
+            registry = "DataCite"
+        else:
+            msg = f"{msg}; DataCite: {dc_msg}"
     if item is None:
         chk.status = "FAIL"
-        chk.reason.append(f"Crossref: {msg}")
+        chk.reason.append(f"{registry}: {msg}")
         return chk
 
     # Compara
@@ -220,9 +287,11 @@ def check_entry(key: str, entry: dict, cited_keys: set[str]) -> Check:
 
     divergences = []
     if chk.bib_year and chk.cr_year and chk.bib_year != chk.cr_year:
-        divergences.append(f"ano: bib={chk.bib_year} / crossref={chk.cr_year}")
+        divergences.append(
+            f"ano: bib={chk.bib_year} / {registry.lower()}={chk.cr_year}")
     if bib_sur and cr_sur and bib_sur != cr_sur:
-        divergences.append(f"primeiro autor: bib={bib_sur} / crossref={cr_sur}")
+        divergences.append(
+            f"primeiro autor: bib={bib_sur} / {registry.lower()}={cr_sur}")
     if chk.title_sim < 0.45:
         divergences.append(
             f"título destoa (Jaccard={chk.title_sim:.2f})"
@@ -233,7 +302,7 @@ def check_entry(key: str, entry: dict, cited_keys: set[str]) -> Check:
         chk.reason.extend(divergences)
     else:
         chk.status = "OK"
-        chk.reason.append("autor, ano e título compatíveis com Crossref")
+        chk.reason.append(f"autor, ano e título compatíveis com {registry}")
     return chk
 
 
@@ -250,11 +319,15 @@ QUARTO_XREF_PREFIXES = ("tbl-", "fig-", "eq-", "sec-", "lst-", "exm-",
 def gather_cited_keys() -> set[str]:
     cited: set[str] = set()
     dirs = [PROJECT_ROOT, PROJECT_ROOT / "capitulos",
-            PROJECT_ROOT / "coda", PROJECT_ROOT / "apendices"]
+            PROJECT_ROOT / "coda", PROJECT_ROOT / "apendices",
+            PROJECT_ROOT / "atividades"]
     for d in dirs:
         if not d.exists():
             continue
-        for p in d.glob("*.qmd"):
+        # rglob = recursivo: os capítulos ficam em subpastas
+        # (capitulos/parte-1-.../01-introducao.qmd). Com glob simples só os
+        # .qmd da raiz seriam lidos e quase tudo apareceria como "não citada".
+        for p in (d.rglob("*.qmd") if d.is_dir() else []):
             in_code = False
             for line in p.read_text(encoding="utf-8").splitlines():
                 if line.lstrip().startswith(("```", "~~~")):

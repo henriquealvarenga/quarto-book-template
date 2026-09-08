@@ -47,6 +47,7 @@ validation-deep.html
 references/*.bib.bak-*
 
 # PDFs de referências (mantidos localmente para consulta; não versionar)
+references/PDF/
 references/PDFs/
 references/pdfs/
 
@@ -62,3 +63,13 @@ references/pdfs/
 
 /.quarto/
 **/*.quarto_ipynb
+
+# PDFs de fontes em QUALQUER pasta (material com direitos autorais; os
+# repositórios são públicos). Padrão adotado no livro Memória em 05/09/2026.
+*.pdf
+
+# Extrações e páginas de PDFs usadas em revisão/auditoria (texto integral de obras; não versionar)
+tmp/
+
+# Fontes de edições anteriores (.docx, .rtf, capas) — consulta local, fora do git
+_old_book/

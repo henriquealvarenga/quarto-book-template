@@ -419,30 +419,44 @@ nav.sidebar {
 }
 
 // =========================================================================
-// Footer — barra preta
+// Footer — identificação profissional (mesmo desenho do projeto Portal):
+// fundo papel, texto apagado centralizado, link sublinhado fino.
 // =========================================================================
 .nav-footer,
 .page-footer,
 footer.nav-footer {
-  background: $footer-bar !important;
-  color: #ffffff !important;
-  border-top: none;
-  padding: 0.7rem 1.5rem;
+  background: $paper;
+  color: $text-muted;
+  border-top: 1px solid $border-color;
+  padding: 1.4rem 1.5rem 1.6rem;
   font-family: $font-family-sans-serif;
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-weight: 500;
-  min-height: 2.5rem;
+  font-size: 0.95rem;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.6;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
-// Links do footer: especificidade (0,1,1) supera a regra global a {} (0,0,1)
-// e a regra .navbar .nav-link (que tem mesma especificidade mas vive em outro
-// container). Sem !important.
+// A coluna central do rodapé do Quarto ocupa só 1/3 da barra, o que partia
+// a identificação exigida pelo CFM no meio de "CRM-MG 31.778". Aqui ela usa
+// a largura disponível e quebra apenas entre os registros e o site.
+.nav-footer .nav-footer-center {
+  flex: 1 1 auto;
+  max-width: none;
+  line-height: 1.6;
+  text-wrap: balance;
+  text-align: center;
+}
+
+// Links do footer: especificidade (0,1,1) supera a regra global a {} (0,0,1).
 .nav-footer a {
-  color: rgba(255, 255, 255, 0.85);
+  color: $text-muted;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
   border-bottom: none;
 }
 
@@ -450,9 +464,6 @@ footer.nav-footer {
   color: $brand;
 }
 
-// Parágrafos no footer só precisam zerar o margin-bottom global do p {}.
-// A cor herda naturalmente do .nav-footer (que herda do .footer/body com
-// override de color: #ffffff no container).
 .nav-footer p {
   margin: 0;
 }

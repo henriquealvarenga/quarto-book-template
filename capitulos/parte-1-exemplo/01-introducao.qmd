@@ -1,15 +1,19 @@
----
-title: "Introdução"
----
+# Introdução {#sec-introducao}
 
-<TODO: este é um capítulo de exemplo. Substitua o conteúdo. Demonstra o uso
-de elementos comuns do tema.>
+<!-- TODO: este é um capítulo de exemplo. Substitua o conteúdo. Demonstra o uso
+de elementos comuns do tema e as convenções da casa: título como heading com
+id (#sec-…), citações via chave do .bib entre colchetes, callout "Pontos-chave" no fecho. -->
 
 ## Uma seção
 
 Texto corrido de exemplo. As citações usam a sintaxe Pandoc e devem existir em
 `references/references.bib` — caso contrário, o validador (`code/validate_bib.py`)
 acusa erro no CI. Exemplo de citação: [@exemplo_modelo_2026].
+
+Toda menção a outro capítulo é um link embutido na frase, como em
+[o prefácio](../../index.qmd), ou uma referência cruzada entre parênteses
+(ver @sec-introducao), que renderiza "Capítulo N" com o número atualizado.
+Nunca escreva o número do capítulo à mão.
 
 ## Recursos do tema
 
@@ -22,3 +26,11 @@ títulos em português via `_language-pt.yml`.
 > Citação em bloco (blockquote) para destaques e epígrafes.
 
 Uma referência cruzada a uma figura ou tabela usa `@fig-rotulo` / `@tbl-rotulo`.
+
+::: {.callout-note appearance="simple"}
+## Pontos-chave
+
+- Todo capítulo termina com este callout: 3–5 itens que só reformulam o capítulo.
+- Título como heading com id `sec-`; links entre capítulos nunca por número.
+- Citações via chave do `.bib`; o validador bloqueia chaves inexistentes.
+:::

@@ -1,6 +1,8 @@
 project:
   type: book
   output-dir: _book
+  resources:
+    - apple-touch-icon.png
 
 lang: pt-BR
 language: _language-pt.yml
@@ -29,15 +31,20 @@ book:
     e nos metadados do EPUB.>
   keyword: "<TODO: palavras-chave separadas por vírgula>"
 
-  # Capa: padrão da casa = 1600×2500 px. Substituir images/capa.png.
-  cover-image: images/capa.png
-  favicon: images/favicon.png                 # 512×512; NÃO reaproveitar a capa
-  image: images/capa.png                      # thumbnail no sidebar e previews sociais
+  # Capa: images/capa.jpg (1600×2500 px, padrão da casa), gerada de images/capa.html
+  # por code/make_cover.sh. Alternativa: editar images/capa.pxd no Pixelmator e
+  # exportar como images/capa.jpg no mesmo tamanho.
+  cover-image: images/capa.jpg
+  favicon: images/favicon.png                 # 256×256, foto do autor (mesmo dos demais livros da casa); NÃO reaproveitar a capa
+  # apple-touch-icon.png (raiz do projeto): PNG 180×180 sobre o off-white do tema (iOS não aceita SVG nem transparência).
+  image: images/capa.jpg                      # thumbnail no sidebar e previews sociais
 
-  # Repositório — trocar a URL em cada projeto
+  # Repositório — trocar a URL em cada projeto. O GitHub Pages do usuário usa o
+  # domínio próprio, logo o projeto é servido em henriquealvarenga.com/<repo>/
+  # (não em github.io).
+  site-url: "https://henriquealvarenga.com/<TODO-repo>"
   repo-url: https://github.com/henriquealvarenga/<TODO-repo>
   repo-branch: main
-  repo-actions: [edit, issue]
   search: true
   sharing: [twitter, facebook, linkedin]
   page-navigation: true
@@ -54,6 +61,7 @@ book:
   # =========================================================================
   chapters:
     - index.qmd
+    - epigrafes.qmd          # contracapa de epígrafes — remover se não usar
     - apresentacao.qmd
     - part: "Parte I — <TODO: nome da parte>"
       chapters:
@@ -69,11 +77,11 @@ book:
   appendices:
     - apendices/apendice-exemplo.qmd
 
+  # Rodapé: identificação profissional (CFM) centralizada — igual em todos os livros.
   page-footer:
-    left: "© 2026 Henrique Alvarenga — Material didático UFSJ"
-    right:
-      - icon: github
-        href: https://github.com/henriquealvarenga/<TODO-repo>
+    center: |
+      Dr. Henrique Alvarenga da Silva · Médico Psiquiatra · CRM-MG 31.778 · RQE 8381<br>
+      [henriquealvarenga.com](https://henriquealvarenga.com)
 
 # =========================================================================
 # Bibliografia — ABNT autor-data, processada pelo Citeproc do Pandoc
@@ -83,7 +91,9 @@ csl: references/csl_styles/ABNT.csl
 citeproc: true
 link-citations: true
 link-bibliography: true
-reference-section-title: "Referências"
+# reference-section-title omitido de propósito: com ele, o Pandoc insere um
+# subtítulo "Referências" vazio ao final de cada capítulo (a lista vive em
+# references.qmd, que já tem o próprio título).
 
 # =========================================================================
 # Formatos de saída
@@ -115,13 +125,15 @@ format:
     anchor-sections: true
     highlight-style: github
     link-external-newwindow: true
+    include-in-header:
+      text: '<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">'
     mermaid:
       theme: neutral
 
   # EPUB e PDF intencionalmente desabilitados no CI por padrão.
   # Para gerar localmente:  quarto render --to epub  ou  quarto render --to pdf
   # epub:
-  #   cover-image: images/capa.png
+  #   cover-image: images/capa.jpg
   # pdf:
   #   documentclass: scrbook
   #   papersize: a5
@@ -137,7 +149,7 @@ format:
   #   biblatexoptions: [style=abnt, backend=biber]
 
 # =========================================================================
-# Execução de código (placeholder para futuras análises em R/Python)
+# Execução de código (os diagramas Mermaid não precisam de kernel)
 # =========================================================================
 execute:
   freeze: auto

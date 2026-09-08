@@ -1,0 +1,20 @@
+---
+number-sections: false
+toc: false
+---
+
+# Contracapa {.unnumbered}
+
+<!-- TODO: contracapa de epígrafes (opcional). O título acima é obrigatório
+para a barra lateral, mas fica oculto pelo styles.css (.epigrafes). Quebras
+de verso: barra invertida no fim da linha. Se não usar, remova epigrafes.qmd
+do sumário em _quarto.yml. -->
+
+::: {.epigrafes}
+
+> *Primeiro verso da epígrafe.*\
+> *Segundo verso.*
+>
+> — Autor, *Obra* (ano)
+
+:::
